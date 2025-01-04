@@ -1,0 +1,6 @@
+/* Add some spacing to the form */
+.formContainer {
+  width: 500px;
+  margin: 0 auto;
+  justify-content: left;
+}

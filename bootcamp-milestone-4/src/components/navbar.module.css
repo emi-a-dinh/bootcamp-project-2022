@@ -1,0 +1,55 @@
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  min-height: 70px;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--cg-black);
+  color: var(--cg-white);
+  padding: 0 30px;
+}
+
+.nav {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navlist {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.navlist a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-family: "Patua One", system-ui;
+}
+
+.navlist a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.navlist a:active {
+  font-weight: bold;
+}
+
+.logo {
+  text-align: left;
+  font-size: 30px;
+}
+
+.logo a {
+  color: white;
+  text-decoration: none;
+}

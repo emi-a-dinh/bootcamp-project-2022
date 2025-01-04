@@ -1,0 +1,19 @@
+.commentForm {
+  border-top: 5px solid black;
+}
+
+.formGroup {
+  color: black;
+}
+
+.commentForm button {
+  color: white;
+  font-weight: bold;
+  background-color: #192841;
+  border-radius: 3px;
+  padding: 3px;
+}
+
+.statusMessage {
+  color: black;
+}

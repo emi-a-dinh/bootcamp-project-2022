@@ -1,0 +1,11 @@
+.blogContainer img {
+  width: 500px;
+  height: auto;
+}
+.blogContainer h1 {
+  font-size: 30px;
+}
+
+.blogTitle {
+  font-size: 30px;
+}

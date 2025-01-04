@@ -1,0 +1,85 @@
+.project {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  margin: 1em 0 2em 0;
+
+  /* Debug border */
+  /* border: 2px solid blue; */
+}
+
+.itemLink {
+  width: 70%;
+
+  /* Debug border */
+  /* border: 2px solid red; */
+}
+
+.projectImage {
+  object-fit: cover;
+  width: 70%;
+  height: 500px;
+  flex-basis: 50%;
+  flex-grow: 2;
+
+  /* Debug border */
+  /* border: 2px solid black; */
+}
+
+.projectDetails {
+  display: flex;
+  background-color: var(--cg-white);
+  width: 90%;
+  height: 300px;
+  flex-shrink: 0;
+  padding: 20px;
+  margin: 0px;
+  line-height: 1.5;
+  overflow: scroll;
+
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+
+  /* Debug border */
+  /* border: 2px solid green; */
+}
+
+.projectBox {
+  /* border: 2px solid green; */
+  height: 500px;
+  width: 30%;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+
+.projectDetails a {
+  color: var(--cg-black);
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.projectDetails a:hover {
+  color: var(--cg-blue);
+  text-decoration: underline;
+}
+
+.projectDetails {
+  font-weight: lighter;
+}
+
+.projectName {
+  background-color: var(--cg-white);
+  font-weight: bold;
+  font-size: 20px;
+}
+.pageTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 3px;
+  width: 100%;
+}
