@@ -1,3 +1,19 @@
+.commentSection {
+  background-color: white;
+  padding: 10px;
+  border-radius: 15px;
+  width: 80%;
+}
+
+.commentTitle {
+  color: black;
+  font-weight: bold;
+}
+
+.comment {
+  color: black;
+}
+
 .pageTitle {
   font-size: 2rem;
   font-weight: bold;
@@ -85,4 +101,5 @@
   justify-content: center;
   gap: 10px;
   width: 100%;
+  padding-bottom: 20px;
 }

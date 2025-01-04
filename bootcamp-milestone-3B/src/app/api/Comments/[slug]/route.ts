@@ -43,7 +43,7 @@ export async function POST(req: NextRequest, { params }: IParams) {
 
     const blog = await Blog.findOneAndUpdate(
       { slug },
-      { $push: { comments: { user, comment, time: new Date() } } },
+      { $push: { comments: { user, comment, date: new Date() } } },
       { new: true }
     );
 

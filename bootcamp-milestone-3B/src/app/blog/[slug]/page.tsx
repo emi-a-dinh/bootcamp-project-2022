@@ -14,7 +14,7 @@ export default async function BlogPost({
   const { slug } = await params;
 
   await connectDB();
-  const blog = await Blog.findOne({ slug }).exec();
+  const blog = await Blog.findOne({ slug }).lean();
 
   if (!blog) {
     return (
@@ -27,7 +27,9 @@ export default async function BlogPost({
       </main>
     );
   }
+
   console.log("test");
+  console.log(blog);
   console.log(blog.comments);
 
   return (
@@ -56,15 +58,16 @@ export default async function BlogPost({
           {blog.comments?.length > 0 ? (
             blog.comments.map(
               (
-                comment: { user: string; comment: string; time: string },
+                comment: { user: string; comment: string; date: string },
                 idx: number
               ) => (
                 <div key={idx} className={styles.comment}>
                   <p>
-                    <strong>{comment.user}</strong>: {comment.comment}
-                  </p>
-                  <p className={styles.commentTime}>
-                    {new Date(comment.time).toLocaleString()}
+                    <strong>{comment.user}</strong>{" "}
+                    <span className={styles.commentTime}>
+                      ({new Date(comment.date).toLocaleString()})
+                    </span>{" "}
+                    : {comment.comment}
                   </p>
                 </div>
               )
