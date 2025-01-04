@@ -6,8 +6,6 @@ import Link from "next/link";
 
 export default async function BlogPreview({
   name,
-  date,
-  description,
   image,
   imageAlt,
   slug,

@@ -4,6 +4,7 @@ import styles from "../blog.module.css";
 import Image from "next/image";
 import connectDB from "@/database/db";
 import Blog from "@/database/blogSchema";
+import CommentForm from "@/components/addComment";
 
 export default async function BlogPost({
   params,
@@ -26,6 +27,8 @@ export default async function BlogPost({
       </main>
     );
   }
+  console.log("test");
+  console.log(blog.comments);
 
   return (
     <div>
@@ -50,7 +53,26 @@ export default async function BlogPost({
         <div className={styles.commentSection}>
           <h4 className={styles.commentTitle}>Comments: </h4>
 
-          <p>No comments yet. Be the first to comment!</p>
+          {blog.comments?.length > 0 ? (
+            blog.comments.map(
+              (
+                comment: { user: string; comment: string; time: string },
+                idx: number
+              ) => (
+                <div key={idx} className={styles.comment}>
+                  <p>
+                    <strong>{comment.user}</strong>: {comment.comment}
+                  </p>
+                  <p className={styles.commentTime}>
+                    {new Date(comment.time).toLocaleString()}
+                  </p>
+                </div>
+              )
+            )
+          ) : (
+            <p>No comments yet. Be the first to comment!</p>
+          )}
+          <CommentForm slug={slug} />
         </div>
       </div>
     </div>
