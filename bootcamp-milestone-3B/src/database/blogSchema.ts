@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
 const commentSchema = new mongoose.Schema({
   user: { type: String, required: true },
@@ -16,6 +16,6 @@ const blogSchema = new mongoose.Schema({
   comments: [commentSchema],
 });
 
-const Blog = mongoose.models["blogs"] || mongoose.model("blogs", blogSchema);
+const Blog = mongoose.models.Blog || mongoose.model("Blog", blogSchema);
 
 export default Blog;

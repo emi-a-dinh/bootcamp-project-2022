@@ -14,7 +14,7 @@ export default async function BlogPost({
   const { slug } = await params;
 
   await connectDB();
-  const blog = await Blog.findOne({ slug }).lean();
+  const blog = await Blog.findOne({ slug });
 
   if (!blog) {
     return (
@@ -27,10 +27,6 @@ export default async function BlogPost({
       </main>
     );
   }
-
-  console.log("test");
-  console.log(blog);
-  console.log(blog.comments);
 
   return (
     <div>

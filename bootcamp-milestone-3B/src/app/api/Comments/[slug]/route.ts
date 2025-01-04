@@ -43,9 +43,11 @@ export async function POST(req: NextRequest, { params }: IParams) {
 
     const blog = await Blog.findOneAndUpdate(
       { slug },
-      { $push: { comments: { user, comment, date: new Date() } } },
+      { $push: { comments: { user, comment, time: new Date() } } },
       { new: true }
     );
+
+    console.log("new blog: ", blog);
 
     if (!blog) {
       return NextResponse.json({ error: "blog not found" }, { status: 404 });
