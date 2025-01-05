@@ -1,6 +1,20 @@
-/* Add some spacing to the form */
-.formContainer {
-  width: 500px;
-  margin: 0 auto;
-  justify-content: left;
+.contactform {
+  padding: 50px;
+}
+
+.contactsection {
+  padding-bottom: 10px;
+}
+
+.contactsection input,
+.contactsection textarea {
+  color: black;
+}
+
+.contactform button {
+  color: black;
+  font-weight: bold;
+  background-color: white;
+  border-radius: 3px;
+  padding: 3px;
 }
