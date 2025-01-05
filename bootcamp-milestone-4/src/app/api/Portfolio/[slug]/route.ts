@@ -2,16 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import connectDB from "@/database/db";
 import portfolioSchema from "@/database/portfolioSchema";
 
-type IParams = {
-  params: {
-    slug: string;
-  };
-};
-
 // If { params } looks confusing, check the note below this code block
-export async function GET(req: NextRequest, { params }: IParams) {
+export async function GET(req: NextRequest) {
   await connectDB(); // function from db.ts before
-  const { slug } = params; // another destructure
+  const slug = req.nextUrl.pathname.split("/").pop()!;
 
   try {
     const portfolio = await portfolioSchema.findOne({ slug }).orFail();

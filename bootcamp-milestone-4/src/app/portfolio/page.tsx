@@ -32,14 +32,13 @@ export default async function Portfolios() {
 }
 
 async function getPortfolio() {
-  await connectDB(); // function from db.ts before
+  await connectDB();
 
   try {
-    // query for all blogs and sort by date
-    const portfolios = await Portfolio.find().orFail();
-    // send a response as the blogs as the message
+    const portfolios = await Portfolio.find();
     return portfolios;
   } catch (err) {
-    return err;
+    console.error(err);
+    return null;
   }
 }

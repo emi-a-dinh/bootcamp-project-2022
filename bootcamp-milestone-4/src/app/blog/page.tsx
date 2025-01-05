@@ -32,17 +32,16 @@ export default async function Blogs() {
     );
   }
 }
-
 async function getBlogs() {
   await connectDB(); // function from db.ts before
 
   try {
     // query for all blogs and sort by date
-    const blogs = await Blog.find().sort({ date: -1 }).lean();
-
+    const blogs = await Blog.find().sort({ date: -1 });
     // send a response as the blogs as the message
     return blogs;
   } catch (err) {
-    return err;
+    console.log(err);
+    return null;
   }
 }

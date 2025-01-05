@@ -9,9 +9,9 @@ import CommentForm from "@/components/addComment";
 export default async function BlogPost({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
+  const { slug } = await params; // Await the params to ensure it's resolved
 
   await connectDB();
   const blog = await Blog.findOne({ slug });

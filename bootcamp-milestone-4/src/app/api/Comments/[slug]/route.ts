@@ -2,16 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import connectDB from "@/database/db";
 import Blog from "@/database/blogSchema";
 
-type IParams = {
-  params: {
-    slug: string;
-  };
-};
-
-export async function GET(req: NextRequest, { params }: IParams) {
+export async function GET(req: NextRequest) {
   await connectDB();
 
-  const { slug } = await params;
+  const slug = req.nextUrl.pathname.split("/").pop()!;
 
   try {
     const blog = await Blog.findOne({ slug }).orFail();
@@ -22,12 +16,12 @@ export async function GET(req: NextRequest, { params }: IParams) {
   }
 }
 
-export async function POST(req: NextRequest, { params }: IParams) {
+export async function POST(req: NextRequest) {
   console.log("POST request received");
 
   await connectDB();
 
-  const { slug } = await params;
+  const slug = req.nextUrl.pathname.split("/").pop()!;
   console.log("Slug:", slug);
 
   try {
