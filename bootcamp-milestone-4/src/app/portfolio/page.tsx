@@ -40,6 +40,6 @@ async function getPortfolio() {
     // send a response as the blogs as the message
     return portfolios;
   } catch (err) {
-    return null;
+    return err;
   }
 }

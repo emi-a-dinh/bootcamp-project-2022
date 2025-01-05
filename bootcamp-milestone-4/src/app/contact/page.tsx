@@ -11,6 +11,7 @@ export default function Contact() {
     message: "",
   });
   const [status, setStatus] = useState("");
+  console.log(status);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
