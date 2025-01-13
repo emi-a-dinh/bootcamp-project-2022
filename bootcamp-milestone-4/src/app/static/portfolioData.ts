@@ -3,4 +3,5 @@ export type Portfolio = {
   image: string;
   imageAlt: string;
   projectDetails: string;
+  comments: [];
 };

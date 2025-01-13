@@ -4,7 +4,11 @@ import styles from "./portfolio.module.css";
 import connectDB from "@/database/db";
 import Portfolio from "@/database/portfolioSchema";
 
-export default async function Portfolios() {
+export default async function Portfolios({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const list_of_port = await getPortfolio();
   if (!list_of_port) {
     return <div>Portfolio Not Found</div>;
@@ -23,6 +27,7 @@ export default async function Portfolios() {
               image={port.image}
               imageAlt={port.imageAlt}
               projectDetails={port.projectDetails}
+              comments={port.comments}
             />
           ))}
         </div>
@@ -36,6 +41,7 @@ async function getPortfolio() {
 
   try {
     const portfolios = await Portfolio.find();
+
     return portfolios;
   } catch (err) {
     console.error(err);

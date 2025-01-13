@@ -22,7 +22,6 @@ export async function POST(req: NextRequest) {
   await connectDB();
 
   const slug = req.nextUrl.pathname.split("/").pop()!;
-  console.log("Slug:", slug);
 
   try {
     const { user, comment } = await req.json();

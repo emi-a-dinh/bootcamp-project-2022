@@ -14,31 +14,62 @@ export default function CommentForm({ slug }: { slug: string }) {
     setStatus(null);
     setIsSubmitting(true);
 
-    try {
-      const res = await fetch(`/api/Comments/${slug}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ user, comment }),
-      });
+    if (!slug.startsWith("1")) {
+      try {
+        console.log("slug", { slug });
+        const res = await fetch(`/api/Comments/${slug}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ user, comment }),
+        });
 
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.error || "failed to post comment");
-      }
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.error || "failed to post comment");
+        }
 
-      setStatus("comment added successfully!");
-      setUser("");
-      setComment("");
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        setStatus(`Error: ${error.message}`);
-      } else {
-        setStatus("an unexpected error occurred");
+        setStatus("comment added successfully!");
+        setUser("");
+        setComment("");
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          setStatus(`Error: ${error.message}`);
+        } else {
+          setStatus("an unexpected error occurred");
+        }
+      } finally {
+        setIsSubmitting(false);
       }
-    } finally {
-      setIsSubmitting(false);
+    } else {
+      try {
+        const projectName = slug.slice(1).trim();
+        const res = await fetch(`/api/Portfolio/${projectName}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ user, comment }),
+        });
+
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.error || "failed to post comment");
+        }
+
+        setStatus("comment added successfully!");
+        setUser("");
+        setComment("");
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          setStatus(`Error: ${error.message}`);
+        } else {
+          setStatus("an unexpected error occurred");
+        }
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
