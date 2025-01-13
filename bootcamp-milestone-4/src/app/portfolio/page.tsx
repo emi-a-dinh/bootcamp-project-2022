@@ -9,6 +9,7 @@ export default async function Portfolios({
 }: {
   params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
   const list_of_port = await getPortfolio();
   if (!list_of_port) {
     return <div>Portfolio Not Found</div>;
